@@ -9,12 +9,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class IntroScreenTest {
 
     private AndroidDriver driver;
-
     private IntroScreen introScreen;
 
     @BeforeEach
@@ -22,10 +22,10 @@ public class IntroScreenTest {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("appium:app", "C:\\\\Users\\\\aleks\\\\OneDrive\\\\Рабочий стол\\\\Православный календарь_1.34_APKPure.apk");
         desiredCapabilities.setCapability("platformName", "Android");
-        desiredCapabilities.setCapability("appium: deviceName", "testDevice");
-        desiredCapabilities.setCapability("appium: automationName", "uiAutomator2");
-        desiredCapabilities.setCapability("appium: ensureWebviewsHavePages", true);
-        desiredCapabilities.setCapability("appium: nativeWebScreenshot", true);
+        desiredCapabilities.setCapability("appium:deviceName", "testDevice");
+        desiredCapabilities.setCapability("appium:automationName", "uiAutomator2");
+        desiredCapabilities.setCapability("appium:ensureWebviewsHavePages", true);
+        desiredCapabilities.setCapability("appium:nativeWebScreenshot", true);
         desiredCapabilities.setCapability("appium: newCommandTimeout", 3600);
         desiredCapabilities.setCapability("appium:connectHardwarekeyboard", true);
 
@@ -43,7 +43,16 @@ public class IntroScreenTest {
     }
 
     @Test
-    public void skipCheck() {
-        assertTrue(introScreen.checkSkipButton(), "Нeт кнопки пропуска обучения");
+    public void NextMonthButtonCheck() {
+        assertTrue(introScreen.checkNextMonthButton(), "Next month button is disable");
+    }
+
+    @Test
+    public void readAllPrayersTitleCheck() {
+        introScreen.commentButtonClick();
+        introScreen.readAllPrayersButtonClick();
+
+        assertEquals("Тропарь святителя Геннадия, архиепископа Новгородского", introScreen.readAllPrayersTitleCheck(),
+                "Incorrect the title");
     }
 }

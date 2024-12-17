@@ -29,15 +29,8 @@
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
-            <version>8.5.1</version>
+            <version>9.3.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.codeborne</groupId>
-            <artifactId>selenide</artifactId>
-            <version>7.5.0</version>
-            <scope>test</scope>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -59,7 +52,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.15.0</version>
+            <version>4.9.0</version>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
