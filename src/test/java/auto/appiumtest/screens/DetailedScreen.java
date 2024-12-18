@@ -1,38 +1,26 @@
-package auto.appiumtest;
+package auto.appiumtest.screens;
 
+import auto.appiumtest.allure.AllureLogger;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.LoggerFactory;
+import io.appium.java_client.android.AndroidKeyCode;
 
-public class IntroScreen {
+import static auto.appiumtest.tests.BaseTest.driver;
 
-    private final AllureLogger LOG = new AllureLogger(LoggerFactory.getLogger(IntroScreen.class));
+public class DetailedScreen {
 
-    @AndroidFindBy(id = "nextMonth")
-    private WebElement nextMonthButton;
-
-    @AndroidFindBy(id = "comment")
-    private WebElement comment;
+    private final AllureLogger LOG = new AllureLogger(LoggerFactory.getLogger(DetailedScreen.class));
 
     @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='com.neosphere.ocalendar:id/read_all_prayers_btn']")
     private WebElement readAllPrayers;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='com.neosphere.ocalendar:id/prayer_title' and @text='Тропарь святителя Геннадия, архиепископа Новгородского']")
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Тропарь святителя Геннадия, архиепископа Новгородского\")")
     private WebElement readAllPrayersTitle;
 
-
-    public boolean checkNextMonthButton() {
-        LOG.info("Check whether the next button is enable");
-        return nextMonthButton.isEnabled();
-    }
-
-    public void commentButtonClick() {
-        LOG.info("Click on the comment button");
-        comment.click();
-    }
 
     public void readAllPrayersButtonClick() {
         LOG.info("Click on the read all prayers button");
@@ -44,7 +32,12 @@ public class IntroScreen {
         return readAllPrayersTitle.getText();
     }
 
-    public IntroScreen(AndroidDriver driver) {
+    public void pressBackButton() {
+        LOG.info("Press system back button");
+        driver.pressKeyCode(AndroidKeyCode.BACK);
+    }
+
+    public DetailedScreen(AndroidDriver driver) {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 }

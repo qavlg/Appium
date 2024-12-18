@@ -1,4 +1,4 @@
-package auto.appiumtest;
+package auto.appiumtest.allure;
 
 import io.qameta.allure.Step;
 import org.slf4j.Logger;
@@ -14,6 +14,12 @@ public class AllureLogger {
     @Step("{logText}")
     public void info(String logText) {
         logger.info(logText);
+    }
+
+    @Step("{logText}")
+    public void infoWithScreenshot(String logText) {
+        logger.info(logText);
+        AllureAttachmentsManager.screenshot();
     }
 
     @Step("{logText}")
