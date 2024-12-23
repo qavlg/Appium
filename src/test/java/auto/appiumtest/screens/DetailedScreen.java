@@ -7,9 +7,6 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.LoggerFactory;
-import io.appium.java_client.android.AndroidKeyCode;
-
-import static auto.appiumtest.tests.BaseTest.driver;
 
 public class DetailedScreen {
 
@@ -21,6 +18,8 @@ public class DetailedScreen {
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Тропарь святителя Геннадия, архиепископа Новгородского\")")
     private WebElement readAllPrayersTitle;
 
+    @AndroidFindBy(id = "read_evangelie")
+    private WebElement readEvangelie;
 
     public void readAllPrayersButtonClick() {
         LOG.info("Click on the read all prayers button");
@@ -32,9 +31,14 @@ public class DetailedScreen {
         return readAllPrayersTitle.getText();
     }
 
-    public void pressBackButton() {
-        LOG.info("Press system back button");
-        driver.pressKeyCode(AndroidKeyCode.BACK);
+    public boolean checkReadEvangelieButton() {
+        LOG.info("Check whether the read evangelie button is enabled");
+        return readEvangelie.isEnabled();
+    }
+
+    public boolean checkReadAllPrayersButton() {
+        LOG.info("Check whether the read all prayers button is enabled");
+        return readAllPrayers.isEnabled();
     }
 
     public DetailedScreen(AndroidDriver driver) {

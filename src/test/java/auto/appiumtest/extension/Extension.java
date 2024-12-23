@@ -1,9 +1,8 @@
 package auto.appiumtest.extension;
 
+import auto.appiumtest.allure.AllureAttachmentsManager;
 import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
-import auto.appiumtest.allure.AllureAttachmentsManager;
-
 
 public class Extension implements AfterTestExecutionCallback {
     @Override

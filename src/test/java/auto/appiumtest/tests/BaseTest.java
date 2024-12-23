@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -14,7 +15,7 @@ import java.time.Duration;
 @ExtendWith({Extension.class, AllureJunit5.class})
 public class BaseTest {
 
-    protected static AndroidDriver driver;
+    public static AndroidDriver driver;
 
     @BeforeEach
     public void setUp() throws MalformedURLException {
@@ -38,7 +39,6 @@ public class BaseTest {
     public static AndroidDriver getDriver() {
         return driver;
     }
-
 
     @AfterEach
     public void tearDown() {
